@@ -65,45 +65,44 @@ export default function CreatorDashboard() {
   return (
     <div>
       <div className="p-4">
-        <h2 className="text-2xl py-2 text-left">Items Created</h2>
+        <h2 className="text-2xl py-2 text-left">Items Created:</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-          {
-            nfts.map((nft, i) => (
-              <div key={i} className="border shadow rounded overflow-hidden">
-                <div className='bg-white h-128 object-cover'>
-                  <img src={nft.image} className='h-128 object-cover' />
-                </div>
-                <div className="p-4 bg-brand text-brand-dark">
-                  <p className="text-2xl font-semibold mb-2">{nft.name}</p>
-                  {/* <p className='text-xs'>Token ID: {nft.ipfsTokenId}</p>
-                  <p className='text-xs'>Image ID: {nft.ipfsImageId}</p> */}
-                  <p className="font-bold mt-4">Price - {nft.price} Eth</p>
-                </div>
+          {nfts.map((nft, i) => (
+            <div key={i} className="border shadow rounded overflow-hidden">
+              <div className='bg-white h-128 object-cover'>
+                <img src={nft.image} className='h-128 object-cover' />
               </div>
-            ))
-          }
-        </div>
-      </div>
-      <div className="px-4">
-        {
-          Boolean(sold.length) && (
-            <div>
-              <h2 className="text-2xl py-2 text-left mt-8">Items sold</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-                {
-                  sold.map((nft, i) => (
-                    <div key={i} className="border shadow rounded overflow-hidden">
-                      <img src={nft.image} className="rounded" />
-                      <div className="p-4 bg-brand text-brand-dark">
-                        <p className="text-2xl font-semibold mb-2">{nft.name}</p>
-                        <p className="font-bold">Price - {nft.price} Eth</p>
-                      </div>
-                    </div>
-                  ))
-                }
+              <div className="p-4 bg-brand text-brand-dark">
+                <p className="text-2xl font-semibold mb-2">{nft.name}</p>
+                {/* <p className='text-xs'>Token ID: {nft.ipfsTokenId}</p>
+                  <p className='text-xs'>Image ID: {nft.ipfsImageId}</p> */}
+                <p className="font-bold mt-4">Price - {nft.price} Eth</p>
               </div>
             </div>
-          )
+          ))}
+        </div>
+      </div>
+
+      <div className="px-4">
+        <h2 className="text-2xl py-2 text-left mt-8">Items sold:</h2>
+        {Boolean(sold.length) ?
+          <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+              {
+                sold.map((nft, i) => (
+                  <div key={i} className="border shadow rounded overflow-hidden">
+                    <img src={nft.image} className="rounded" />
+                    <div className="p-4 bg-brand text-brand-dark">
+                      <p className="text-2xl font-semibold mb-2">{nft.name}</p>
+                      <p className="font-bold">Price - {nft.price} Eth</p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+          :
+          <p className='text-left'>No items sold yet.</p>
         }
       </div>
     </div>
