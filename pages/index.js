@@ -84,7 +84,7 @@ export default function Home() {
   return (
     <div className="px-4">
       <h1 className='text-brand text-2xl mt-2 mb-8'>Special Collection: Jewelry</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 pt-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-16 pt-4">
         {nfts.map((nft, i) => (
           <div key={i} className="border border-brand shadow rounded overflow-hidden text-left">
             <img src={nft.image} alt={nft.image} className='' />
