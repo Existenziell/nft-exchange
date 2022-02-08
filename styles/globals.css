@@ -1,0 +1,22 @@
+/* --------------------------------------------------------
+Style Sheet for DeezNutz
+
+version: 0.9
+last modified: 13.09.2021 by Christof Bauer
+author: Christof Bauer
+email: bauer.christof@gmail.com
+----------------------------------------------------------*/
+
+@import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
+
+:root {
+  --color-brand: #C90076;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active {
+  @apply font-extrabold border-b-2;
+}
