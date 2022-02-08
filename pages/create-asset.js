@@ -3,11 +3,12 @@ import { ethers } from 'ethers'
 import { create as ipfsHttpClient } from 'ipfs-http-client'
 import { useRouter } from 'next/router'
 import Web3Modal from 'web3modal'
+import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader'
 
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
 
 import {
-  nftaddress, nftmarketaddress, deeznutzaddress
+  nftaddress, nftmarketaddress
 } from '../config'
 
 import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
@@ -15,6 +16,7 @@ import Market from '../artifacts/contracts/Market.sol/NFTMarket.json'
 
 export default function CreateItem() {
   const [fileUrl, setFileUrl] = useState(null)
+  const [isCreating, setIsCreating] = useState(false)
   const [formInput, updateFormInput] = useState({ price: '', name: '', description: '' })
   const router = useRouter()
   const ipfsUrl = 'https://ipfs.infura.io/ipfs/'
@@ -37,6 +39,7 @@ export default function CreateItem() {
   }
 
   async function createMarket() {
+    setIsCreating(true)
     const { name, description, price } = formInput
     if (!name || !description || !price || !fileUrl) return
     /* first, upload to IPFS */
@@ -74,42 +77,55 @@ export default function CreateItem() {
 
     transaction = await contract.createMarketItem(nftaddress, tokenId, price, { value: listingPrice })
     await transaction.wait()
+    setIsCreating(false)
     router.push('/')
   }
 
   return (
-    <div className="flex justify-center">
-      <div className="w-1/2 flex flex-col pb-12">
-        <input
-          placeholder="Asset Name"
-          className="mt-8 border rounded p-4"
-          onChange={e => updateFormInput({ ...formInput, name: e.target.value })}
-        />
-        <textarea
-          placeholder="Asset Description"
-          className="mt-2 border rounded p-4"
-          onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
-        />
-        <input
-          placeholder="Asset Price in Eth"
-          className="mt-2 border rounded p-4"
-          onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
-        />
-        <input
-          type="file"
-          name="Asset"
-          className="my-4"
-          onChange={onChange}
-        />
-        {
-          fileUrl && (
-            <img className="rounded mt-4" width="350" src={fileUrl} />
-          )
-        }
-        <button onClick={createMarket} className="font-bold mt-4 bg-brand text-white rounded p-4 shadow-lg">
-          Create Digital Asset
-        </button>
-      </div>
+    <div className="flex justify-center text-brand-dark">
+      {isCreating ?
+        <div className='mt-32 flex flex-col items-center justify-center text-brand'>
+          <p className='text-xl'>Creating asset on the blockchain...</p>
+          <p className='text-sm mb-8'>Please wait for MetaMask prompt.</p>
+          <ClimbingBoxLoader size={25} color='var(--color-brand)' />
+        </div>
+        :
+        <form className="w-1/2 flex flex-col pb-12">
+          <input
+            required
+            placeholder="Asset Name"
+            className="mt-8 border rounded p-4"
+            onChange={e => updateFormInput({ ...formInput, name: e.target.value })}
+          />
+          <textarea
+            required
+            placeholder="Asset Description"
+            className="mt-2 border rounded p-4"
+            onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
+          />
+          <input
+            required
+            placeholder="Asset Price in Eth"
+            className="mt-2 border rounded p-4"
+            onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
+          />
+          <input
+            required
+            type="file"
+            name="Asset"
+            className="my-4"
+            onChange={onChange}
+          />
+          {
+            fileUrl && (
+              <img className="rounded mt-4" width="350" src={fileUrl} />
+            )
+          }
+          <button onClick={createMarket} className="font-bold mt-4 bg-brand text-brand-dark rounded p-4 shadow-lg">
+            Create Digital Asset
+          </button>
+        </form>
+      }
     </div>
   )
 }

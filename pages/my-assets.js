@@ -57,7 +57,7 @@ export default function MyAssets() {
   return (
     <div className="flex justify-center">
       <div className="p-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
           {
             nfts.map((nft, i) => (
               <div key={i} className="border border-brand text-brand-dark shadow rounded overflow-hidden">

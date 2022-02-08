@@ -18,15 +18,14 @@ async function main() {
   await nft.deployed()
   console.log("nft deployed to:", nft.address)
 
-  const DeezNutz = await ethers.getContractFactory("DeezNutzNFT")
-  const deezNutz = await DeezNutz.deploy("DeezNutz NFT", "DNN", "https://deez-nutz.vercel.app/api/")
-  await deezNutz.deployed()
-  console.log("DeezNutz deployed to:", deezNutz.address)
+  // const DeezNutz = await ethers.getContractFactory("DeezNutzNFT")
+  // const deezNutz = await DeezNutz.deploy("DeezNutz NFT", "DNN", "https://deez-nutz.vercel.app/api/")
+  // await deezNutz.deployed()
+  // console.log("DeezNutz deployed to:", deezNutz.address)
 
   let config = `
   export const nftmarketaddress = "${nftMarket.address}"
   export const nftaddress = "${nft.address}"
-  export const deeznutzaddress = "${deezNutz.address}"
   `
 
   let data = JSON.stringify(config)

@@ -4,7 +4,7 @@ import axios from 'axios'
 import Web3Modal from "web3modal"
 
 import {
-  nftmarketaddress, nftaddress, deeznutzaddress
+  nftmarketaddress, nftaddress
 } from '../config'
 
 import Market from '../artifacts/contracts/Market.sol/NFTMarket.json'
@@ -66,11 +66,13 @@ export default function CreatorDashboard() {
     <div>
       <div className="p-4">
         <h2 className="text-2xl py-2 text-left">Items Created</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
           {
             nfts.map((nft, i) => (
               <div key={i} className="border shadow rounded overflow-hidden">
-                <img src={nft.image} className="rounded" />
+                <div className='bg-white h-128 object-cover'>
+                  <img src={nft.image} className='h-128 object-cover' />
+                </div>
                 <div className="p-4 bg-brand text-brand-dark">
                   <p className="text-2xl font-semibold mb-2">{nft.name}</p>
                   {/* <p className='text-xs'>Token ID: {nft.ipfsTokenId}</p>

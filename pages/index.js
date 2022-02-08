@@ -83,16 +83,16 @@ export default function Home() {
 
   return (
     <div className="px-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 pt-4">
         {nfts.map((nft, i) => (
           <div key={i} className="border border-brand shadow rounded overflow-hidden text-left">
-            <img src={nft.image} alt={nft.image} />
+            <img src={nft.image} alt={nft.image} className='' />
             <div className="p-4">
-              <p className="text-2xl font-semibold">{nft.name}</p>
-              <p className="my-6 text-gray-400 overflow-hidden whitespace-nowrap overflow-ellipsis">{nft.description}</p>
+              <p className="text-2xl font-semibold h-16">{nft.name}</p>
+              <p className="my-6">{nft.description}</p>
               <div className='text-sm'>
-                <p>Owner: <span className="text-gray-400">{nft.owner.substring(0, 5)}&#8230;{nft.owner.slice(nft.owner.length - 4)}</span></p>
-                <p>Seller: <span className="text-gray-400">{nft.seller.substring(0, 5)}&#8230;{nft.seller.slice(nft.seller.length - 4)}</span></p>
+                <p>Owner: <span>{nft.owner.substring(0, 5)}&#8230;{nft.owner.slice(nft.owner.length - 4)}</span></p>
+                <p>Seller: <span>{nft.seller.substring(0, 5)}&#8230;{nft.seller.slice(nft.seller.length - 4)}</span></p>
               </div>
             </div>
             <div className="p-4 bg-brand">
