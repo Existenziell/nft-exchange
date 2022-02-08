@@ -91,6 +91,7 @@ export default function CreateItem() {
         </div>
         :
         <form className="w-1/2 flex flex-col pb-12">
+          <h1 className='text-brand text-2xl'>Create asset to list on the market:</h1>
           <input
             required
             placeholder="Asset Name"
