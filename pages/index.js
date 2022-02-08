@@ -76,33 +76,31 @@ export default function Home() {
   }
 
   if (loadingState === 'not-loaded')
-    return (<div>Loading...</div>)
+    return (<div className='ml-4'>Loading...</div>)
 
   if (loadingState === 'loaded' && !nfts.length)
     return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
 
   return (
-    <div className="flex justify-center">
-      <div className="px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-          {
-            nfts.map((nft, i) => (
-              <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <img src={nft.image} />
-                <div className="p-4">
-                  <p className="text-2xl font-semibold">{nft.name}</p>
-                  <p className="my-6 text-gray-400 overflow-hidden whitespace-nowrap overflow-ellipsis">{nft.description}</p>
-                  Owner: <p className="text-gray-400">{nft.owner.substring(0, 5)}&#8230;{nft.owner.slice(nft.owner.length - 4)}</p>
-                  Seller: <p className="text-gray-400">{nft.seller.substring(0, 5)}&#8230;{nft.seller.slice(nft.seller.length - 4)}</p>
-                </div>
-                <div className="p-4 bg-black">
-                  <p className="text-2xl mb-4 font-bold text-white">{nft.price} ETH</p>
-                  <button className="w-full bg-brand text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
-                </div>
+    <div className="px-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+        {nfts.map((nft, i) => (
+          <div key={i} className="border border-brand shadow rounded overflow-hidden text-left">
+            <img src={nft.image} alt={nft.image} />
+            <div className="p-4">
+              <p className="text-2xl font-semibold">{nft.name}</p>
+              <p className="my-6 text-gray-400 overflow-hidden whitespace-nowrap overflow-ellipsis">{nft.description}</p>
+              <div className='text-sm'>
+                <p>Owner: <span className="text-gray-400">{nft.owner.substring(0, 5)}&#8230;{nft.owner.slice(nft.owner.length - 4)}</span></p>
+                <p>Seller: <span className="text-gray-400">{nft.seller.substring(0, 5)}&#8230;{nft.seller.slice(nft.seller.length - 4)}</span></p>
               </div>
-            ))
-          }
-        </div>
+            </div>
+            <div className="p-4 bg-brand">
+              <p className="text-2xl mb-4 font-bold text-brand-dark">{nft.price} ETH</p>
+              <button className="w-full bg-brand-dark text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )

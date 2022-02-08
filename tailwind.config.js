@@ -11,7 +11,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        'brand': '#C90076',
+        'brand': '#a6d1c9',
+        'brand-dark': '#282b29',
+        'highlight': '#C90076',
       },
     },
   },

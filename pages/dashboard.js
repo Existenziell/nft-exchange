@@ -9,7 +9,6 @@ import {
 
 import Market from '../artifacts/contracts/Market.sol/NFTMarket.json'
 import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
-import DeezNutz from '../artifacts/contracts/DeezNutzNFT.sol/DeezNutzNFT.json'
 
 export default function CreatorDashboard() {
 
@@ -66,18 +65,17 @@ export default function CreatorDashboard() {
   return (
     <div>
       <div className="p-4">
-        <h2 className="text-2xl py-2">Items Created</h2>
+        <h2 className="text-2xl py-2 text-left">Items Created</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {
             nfts.map((nft, i) => (
-              <div key={i} className="border shadow rounded-xl overflow-hidden">
+              <div key={i} className="border shadow rounded overflow-hidden">
                 <img src={nft.image} className="rounded" />
-                <div className="p-4 bg-black text-white">
+                <div className="p-4 bg-brand text-brand-dark">
                   <p className="text-2xl font-semibold mb-2">{nft.name}</p>
-                  IPFS:
-                  <p className='text-xs'>Token ID: {nft.ipfsTokenId}</p>
-                  <p className='text-xs'>Image ID: {nft.ipfsImageId}</p>
-                  <p className="text-2xl font-bold mt-4">Price - {nft.price} Eth</p>
+                  {/* <p className='text-xs'>Token ID: {nft.ipfsTokenId}</p>
+                  <p className='text-xs'>Image ID: {nft.ipfsImageId}</p> */}
+                  <p className="font-bold mt-4">Price - {nft.price} Eth</p>
                 </div>
               </div>
             ))
@@ -88,14 +86,15 @@ export default function CreatorDashboard() {
         {
           Boolean(sold.length) && (
             <div>
-              <h2 className="text-2xl py-2">Items sold</h2>
+              <h2 className="text-2xl py-2 text-left mt-8">Items sold</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
                 {
                   sold.map((nft, i) => (
-                    <div key={i} className="border shadow rounded-xl overflow-hidden">
+                    <div key={i} className="border shadow rounded overflow-hidden">
                       <img src={nft.image} className="rounded" />
-                      <div className="p-4 bg-black">
-                        <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
+                      <div className="p-4 bg-brand text-brand-dark">
+                        <p className="text-2xl font-semibold mb-2">{nft.name}</p>
+                        <p className="font-bold">Price - {nft.price} Eth</p>
                       </div>
                     </div>
                   ))

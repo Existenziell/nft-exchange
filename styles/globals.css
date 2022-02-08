@@ -1,5 +1,5 @@
 /* --------------------------------------------------------
-Style Sheet for DeezNutz
+Style Sheet for NFT exchange
 
 version: 0.9
 last modified: 13.09.2021 by Christof Bauer
@@ -10,7 +10,9 @@ email: bauer.christof@gmail.com
 @import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
 
 :root {
-  --color-brand: #C90076;
+  --color-brand: #a6d1c9;
+  --color-brand-dark: #282b29;
+  --color-highlight: #C90076;
 }
 
 @tailwind base;
@@ -18,5 +20,5 @@ email: bauer.christof@gmail.com
 @tailwind utilities;
 
 .active {
-  @apply font-extrabold border-b-2;
+  @apply font-extrabold border-b-2 border-brand;
 }
