@@ -90,7 +90,7 @@ export default function CreateItem() {
           <ClimbingBoxLoader size={25} color='var(--color-brand)' />
         </div>
         :
-        <form className="w-1/2 flex flex-col pb-12">
+        <form className="w-full md:w-2/3 lg:w-1/2 flex flex-col pb-12">
           <h1 className='text-brand text-2xl'>Create asset to list on the market:</h1>
           <input
             required

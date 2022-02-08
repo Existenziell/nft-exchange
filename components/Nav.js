@@ -10,6 +10,7 @@ const Nav = () => {
     { name: 'Sell Asset', path: '/create-asset' },
     { name: 'My Assets', path: '/my-assets' },
     { name: 'Dashboard', path: '/dashboard' },
+    { name: 'About', path: '/about' },
   ]
 
   return (
@@ -17,7 +18,7 @@ const Nav = () => {
 
       <div className='flex items-center'>
         <Image src='/nft.png' width={100} height={106} alt='nft' />
-        <p className="ml-8 text-4xl font-bold text-center">NFT Exchange</p>
+        <p className="hidden lg:block ml-8 text-4xl font-bold text-center">NFT Exchange</p>
       </div>
 
       <div>
