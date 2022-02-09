@@ -2,10 +2,27 @@ import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
 import Layout from '../components/_Layout'
 import Head from 'next/head'
+import AppContext from "../context/AppContext"
+import { useState } from 'react'
 
 function Exchange({ Component, pageProps }) {
+
+  const [isCorrectChain, setIsCorrectChain] = useState(false)
+  const [userChainId, setUserChainId] = useState(0)
+  const [provider, setProvider] = useState()
+
   return (
-    <>
+    <AppContext.Provider value={{
+      state: {
+        userChainId: userChainId,
+        isCorrectChain: isCorrectChain,
+        provider: provider,
+      },
+      setIsCorrectChain: setIsCorrectChain,
+      setUserChainId: setUserChainId,
+      setProvider: setProvider,
+    }}
+    >
       <Head>
         <title>NFT Exchange | Create, List and Trade NFTs</title>
         <meta name='description' content='NFT Exchange | Create, List and Trade NFTs' />
@@ -25,7 +42,7 @@ function Exchange({ Component, pageProps }) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </>
+    </AppContext.Provider >
   )
 }
 

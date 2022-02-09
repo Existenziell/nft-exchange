@@ -1,45 +1,36 @@
 import { ethers } from 'ethers'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
-import Web3Modal from "web3modal" // Used to connect to a users ehtereum wallet
+import Web3Modal from "web3modal"
 import Link from 'next/link'
 import Image from 'next/image'
+import AppContext from '../context/AppContext'
+import convertSlug from '../lib/convertSlug'
 
-// Will be populated once the smart contracts are deployed.
 import {
   nftaddress, nftmarketaddress
 } from '../config'
 
-// Import ABIs - JSON representation of our smart contracts - allows to interaction from a frontend application
-// Have been compiled by hardhat
 import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
 import Market from '../artifacts/contracts/Market.sol/NFTMarket.json'
 
-export default function Home() {
+const Exchange = () => {
   const [nfts, setNfts] = useState([])
   const [loadingState, setLoadingState] = useState('not-loaded')
 
+  const context = useContext(AppContext)
+  let isCorrectChain = context.state.isCorrectChain
+  let provider = context.state.provider
+
   useEffect(() => {
-    loadNFTs()
-  }, [])
+    if (isCorrectChain && provider) loadNFTs()
+  }, [isCorrectChain, loadingState])
 
   async function loadNFTs() {
-    // local
-    // const provider = new ethers.providers.JsonRpcProvider()
-    // mainnet/testnet
-    const web3Modal = new Web3Modal({
-      network: "mumbai",
-      cacheProvider: true,
-    })
-    const connection = await web3Modal.connect()
-    const provider = new ethers.providers.Web3Provider(connection)
-
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider)
     const data = await marketContract.fetchMarketItems()
-
     const items = await Promise.all(data.map(async i => {
-
       const tokenUri = await tokenContract.tokenURI(i.tokenId)
       const meta = await axios.get(tokenUri)
       let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
@@ -74,6 +65,7 @@ export default function Home() {
       value: price
     })
     await transaction.wait()
+
     loadNFTs()
   }
 
@@ -83,13 +75,21 @@ export default function Home() {
   if (loadingState === 'loaded' && !nfts.length)
     return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
 
+  if (!context.state.isCorrectChain)
+    return (
+      <>
+        <p className='text-lg'>We operate on the Polygon Mumbai Testnet (80001).<br />Please change your network to proceed.</p>
+        <p className='mt-2 text-sm'><a href='https://blog.pods.finance/guide-connecting-mumbai-testnet-to-your-metamask-87978071aca8' target='_blank' className='link'>This</a> article can help with that.</p>
+      </>
+    )
+
   return (
     <div className="px-4 pb-16">
       <h1 className='text-brand text-2xl mb-8'>Special Collection Today:</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 pt-4">
         {nfts.map((nft, i) => (
           <div key={i} className="border border-brand shadow rounded overflow-hidden text-left mb-16">
-            <Link href={`/assets/${nft.name.replaceAll(' ', '-').toLowerCase()}`}>
+            <Link href={`/assets/${convertSlug(nft.name)}`}>
               <a>
                 <Image width={600} height={600} layout={'responsive'} src={nft.image} alt={nft.image} />
                 <div className="p-4">
@@ -113,3 +113,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Exchange

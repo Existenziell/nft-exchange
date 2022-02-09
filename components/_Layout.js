@@ -1,8 +1,14 @@
+import { useRouter } from 'next/router'
+import { ethers } from 'ethers'
+import { hasEthereum } from '../lib/ethereum'
+import { ConnectWallet } from './ConnectWallet'
+import { chains } from '../lib/chains'
 import NextNprogress from 'nextjs-progressbar'
 import Image from 'next/image'
 import Link from 'next/link'
 import Nav from './Nav'
 import SVGs from './SVGs'
+import Wallet from './Wallet'
 
 const Layout = ({ children }) => {
   return (
@@ -15,6 +21,7 @@ const Layout = ({ children }) => {
           </a></Link>
         </div>
         <Nav />
+        <Wallet />
       </div>
       <main className='w-full min-h-screen py-8 px-4 md:px-8 text-center text-brand bg-brand-dark bg-cover'>
         {children}

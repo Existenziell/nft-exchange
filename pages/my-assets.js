@@ -1,7 +1,7 @@
 import { ethers } from 'ethers'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
-import Web3Modal from "web3modal"
+import AppContext from '../context/AppContext'
 import Link from 'next/link'
 
 // Will be populated once the smart contracts are deployed.
@@ -17,19 +17,16 @@ export default function MyAssets() {
   const [nfts, setNfts] = useState([])
   const [loadingState, setLoadingState] = useState('not-loaded')
 
+  const context = useContext(AppContext)
+  let isCorrectChain = context.state.isCorrectChain
+  let provider = context.state.provider
+
   useEffect(() => {
-    loadNFTs()
-  }, [])
+    if (isCorrectChain && provider) loadNFTs()
+  }, [isCorrectChain, loadingState])
 
   async function loadNFTs() {
-    const web3Modal = new Web3Modal({
-      network: "mumbai",
-      cacheProvider: true,
-    })
-    const connection = await web3Modal.connect()
-    const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
-
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const data = await marketContract.fetchMyNFTs()
