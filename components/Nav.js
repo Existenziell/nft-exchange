@@ -7,7 +7,7 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const links = [
-    { name: 'Root', path: '/' },
+    { name: 'Exchange', path: '/' },
     { name: 'Sell Asset', path: '/create-asset' },
     { name: 'My Assets', path: '/my-assets' },
     { name: 'Dashboard', path: '/dashboard' },
@@ -22,7 +22,7 @@ const Nav = () => {
           return (
             <li key={l.name} className='mr-4'>
               <Link href={l.path}>
-                <a className={`p-3 text-brand hover:bg-brand hover:text-brand-dark transition-all ${router.pathname === l.path && 'active'}`}>
+                <a className={`p-2 text-brand hover:bg-brand hover:text-brand-dark transition-all ${router.pathname === l.path && 'active'}`}>
                   {l.name}
                 </a>
               </Link>

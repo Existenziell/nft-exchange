@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from "web3modal" // Used to connect to a users ehtereum wallet
 import Link from 'next/link'
+import Image from 'next/image'
 
 // Will be populated once the smart contracts are deployed.
 import {
@@ -85,22 +86,19 @@ export default function Home() {
   return (
     <div className="px-4 pb-16">
       <h1 className='text-brand text-2xl mb-8'>Special Collection Today:</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-16 pt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 pt-4">
         {nfts.map((nft, i) => (
-
-          <div key={i} className="border border-brand shadow rounded overflow-hidden text-left">
+          <div key={i} className="border border-brand shadow rounded overflow-hidden text-left mb-16">
             <Link href={`/assets/${nft.name.replaceAll(' ', '-').toLowerCase()}`}>
               <a>
-                <img src={nft.image} alt={nft.image} className='' />
+                <Image width={600} height={600} layout={'responsive'} src={nft.image} alt={nft.image} className='bg-red-900 border border-red-600' />
                 <div className="p-4">
-                  <p className="text-2xl font-semibold h-16">{nft.name}</p>
+                  <p className="text-xl sm:text-2xl font-semibold h-16">{nft.name}</p>
                   <p className="my-6">{nft.description}</p>
                   <div className='text-sm'>
                     <p>Owner: <span>{nft.owner.substring(0, 5)}&#8230;{nft.owner.slice(nft.owner.length - 4)}</span></p>
                     <p>Seller: <span>{nft.seller.substring(0, 5)}&#8230;{nft.seller.slice(nft.seller.length - 4)}</span></p>
-                    {nft.tokenId}
                   </div>
-
                 </div>
               </a>
             </Link>

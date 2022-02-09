@@ -79,7 +79,7 @@ export default function CreatorDashboard() {
                 <img src={nft.image} className='h-128 object-cover' />
               </div>
               <div className="p-4 bg-brand text-brand-dark">
-                <p className="text-2xl font-semibold mb-2">{nft.name}</p>
+                <p className="text-2xl font-semibold mb-2 h-16">{nft.name}</p>
                 {/* <p className='text-xs'>Token ID: {nft.ipfsTokenId}</p>
                   <p className='text-xs'>Image ID: {nft.ipfsImageId}</p> */}
                 <p className="font-bold mt-4">Price - {nft.price} Eth</p>
