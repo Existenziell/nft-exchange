@@ -2,6 +2,7 @@ import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from "web3modal" // Used to connect to a users ehtereum wallet
+import Link from 'next/link'
 
 // Will be populated once the smart contracts are deployed.
 import {
@@ -83,24 +84,32 @@ export default function Home() {
 
   return (
     <div className="px-4 pb-16">
-      <h1 className='text-brand text-2xl mb-8'>Special Collection: Jewelry</h1>
+      <h1 className='text-brand text-2xl mb-8'>Special Collection Today:</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-16 pt-4">
         {nfts.map((nft, i) => (
+
           <div key={i} className="border border-brand shadow rounded overflow-hidden text-left">
-            <img src={nft.image} alt={nft.image} className='' />
-            <div className="p-4">
-              <p className="text-2xl font-semibold h-16">{nft.name}</p>
-              <p className="my-6">{nft.description}</p>
-              <div className='text-sm'>
-                <p>Owner: <span>{nft.owner.substring(0, 5)}&#8230;{nft.owner.slice(nft.owner.length - 4)}</span></p>
-                <p>Seller: <span>{nft.seller.substring(0, 5)}&#8230;{nft.seller.slice(nft.seller.length - 4)}</span></p>
-              </div>
-            </div>
+            <Link href={`/assets/${nft.name.replaceAll(' ', '-').toLowerCase()}`}>
+              <a>
+                <img src={nft.image} alt={nft.image} className='' />
+                <div className="p-4">
+                  <p className="text-2xl font-semibold h-16">{nft.name}</p>
+                  <p className="my-6">{nft.description}</p>
+                  <div className='text-sm'>
+                    <p>Owner: <span>{nft.owner.substring(0, 5)}&#8230;{nft.owner.slice(nft.owner.length - 4)}</span></p>
+                    <p>Seller: <span>{nft.seller.substring(0, 5)}&#8230;{nft.seller.slice(nft.seller.length - 4)}</span></p>
+                    {nft.tokenId}
+                  </div>
+
+                </div>
+              </a>
+            </Link>
             <div className="p-4 bg-brand">
               <p className="text-2xl mb-4 font-bold text-brand-dark">{nft.price} ETH</p>
               <button className="w-full bg-brand-dark text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
             </div>
           </div>
+
         ))}
       </div>
     </div>

@@ -7,7 +7,7 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const links = [
-    { name: 'Home', path: '/' },
+    { name: 'Root', path: '/' },
     { name: 'Sell Asset', path: '/create-asset' },
     { name: 'My Assets', path: '/my-assets' },
     { name: 'Dashboard', path: '/dashboard' },
