@@ -20,9 +20,9 @@ const Nav = () => {
       <ul className='hidden md:flex'>
         {links.map(l => {
           return (
-            <li key={l.name}>
+            <li key={l.name} className='mr-4'>
               <Link href={l.path}>
-                <a className={`mr-4 text-brand ${router.pathname === l.path && 'active'}`}>
+                <a className={`p-3 text-brand hover:bg-brand hover:text-brand-dark transition-all ${router.pathname === l.path && 'active'}`}>
                   {l.name}
                 </a>
               </Link>
