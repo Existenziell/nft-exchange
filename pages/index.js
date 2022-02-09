@@ -91,7 +91,7 @@ export default function Home() {
           <div key={i} className="border border-brand shadow rounded overflow-hidden text-left mb-16">
             <Link href={`/assets/${nft.name.replaceAll(' ', '-').toLowerCase()}`}>
               <a>
-                <Image width={600} height={600} layout={'responsive'} src={nft.image} alt={nft.image} className='bg-red-900 border border-red-600' />
+                <Image width={600} height={600} layout={'responsive'} src={nft.image} alt={nft.image} />
                 <div className="p-4">
                   <p className="text-xl sm:text-2xl font-semibold h-16">{nft.name}</p>
                   <p className="my-6">{nft.description}</p>
