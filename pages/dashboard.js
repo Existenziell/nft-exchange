@@ -2,6 +2,7 @@ import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from "web3modal"
+import Link from 'next/link'
 
 import {
   nftmarketaddress, nftaddress
@@ -60,7 +61,12 @@ export default function CreatorDashboard() {
   }
 
   if (loadingState === 'loaded' && !nfts.length)
-    return (<h1 className="py-10 px-20 text-3xl">No assets created</h1>)
+    return (
+      <>
+        <h1 className="text-2xl">No assets created yet.</h1>
+        <Link href='/create-asset'><a className='link'>Create asset</a></Link>
+      </>
+    )
 
   return (
     <div>

@@ -3,7 +3,7 @@ import '../styles/globals.css'
 import Layout from '../components/_Layout'
 import Head from 'next/head'
 
-function MyApp({ Component, pageProps }) {
+function Exchange({ Component, pageProps }) {
   return (
     <>
       <Head>
@@ -29,4 +29,4 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp
+export default Exchange

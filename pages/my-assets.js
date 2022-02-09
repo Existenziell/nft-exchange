@@ -2,6 +2,7 @@ import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from "web3modal"
+import Link from 'next/link'
 
 // Will be populated once the smart contracts are deployed.
 import {
@@ -52,7 +53,12 @@ export default function MyAssets() {
   }
 
   if (loadingState === 'loaded' && !nfts.length)
-    return (<h1 className="py-10 px-20 text-3xl">No assets owned</h1>)
+    return (
+      <>
+        <h1 className="text-2xl">No assets owned yet.</h1>
+        <Link href='/'><a className='link'>Browse catalogue</a></Link>
+      </>
+    )
 
   return (
     <div className="flex justify-center">

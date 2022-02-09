@@ -22,3 +22,15 @@ email: bauer.christof@gmail.com
 .active {
   @apply font-extrabold border-b-2 border-brand;
 }
+
+.mobile-menu .active {
+  @apply font-extrabold text-brand bg-brand-dark;
+}
+
+.link {
+  @apply underline outline-none transition-all duration-300;
+}
+
+.link:hover {
+  @apply no-underline rounded transition-all duration-500 text-white px-1 bg-brand-dark; 
+}
