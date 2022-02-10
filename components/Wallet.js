@@ -75,7 +75,7 @@ const Wallet = () => {
   return (
     <div className='absolute top-24 right-6 text-right text-sm'>
       {isWalletConnected ?
-        <div className='dark:text-brand'>
+        <div>
           {connectedWalletAddress.substring(0, 5)}&#8230;{connectedWalletAddress.slice(connectedWalletAddress.length - 4)}
         </div>
         :

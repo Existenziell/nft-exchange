@@ -30,7 +30,7 @@ const SVGs = () => {
           cx='60'
           cy='108'
           r='30'
-          stroke='var(--color-brand-dark)'
+          stroke='var(--color-brand)'
           strokeWidth='3'
           strokeLinecap='round'
           fill='transparent'
@@ -54,7 +54,7 @@ const SVGs = () => {
           x='10'
           y='60'
           rx='20'
-          stroke='var(--color-brand-dark)'
+          stroke='var(--color-brand)'
           strokeLinecap='round'
           fill='transparent'
           strokeWidth='6'
@@ -68,7 +68,7 @@ const SVGs = () => {
           y1='170'
           x2='150'
           y2='30'
-          stroke='var(--color-brand-dark)'
+          stroke='var(--color-brand)'
           strokeWidth='10'
           strokeLinecap='round'
           variants={draw}
@@ -90,7 +90,7 @@ const SVGs = () => {
           y1='30'
           x2='270'
           y2='170'
-          stroke='var(--color-brand-dark)'
+          stroke='var(--color-brand)'
           strokeLinecap='round'
           strokeWidth='10'
           variants={draw}
@@ -114,7 +114,7 @@ const SVGs = () => {
           y1='30'
           x2='390'
           y2='30'
-          stroke='var(--color-brand-dark)'
+          stroke='var(--color-brand)'
           strokeWidth='10'
           strokeLinecap='round'
           variants={draw}
@@ -125,7 +125,7 @@ const SVGs = () => {
           y1='100'
           x2='370'
           y2='100'
-          stroke='var(--color-brand-dark)'
+          stroke='var(--color-brand)'
           strokeWidth='10'
           strokeLinecap='round'
           variants={draw}
@@ -138,7 +138,7 @@ const SVGs = () => {
           y1='170'
           x2='460'
           y2='30'
-          stroke='var(--color-brand-dark)'
+          stroke='var(--color-brand)'
           strokeWidth='10'
           strokeLinecap='round'
           variants={draw}
