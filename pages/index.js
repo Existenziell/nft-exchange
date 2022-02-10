@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import AppContext from '../context/AppContext'
 import convertSlug from '../lib/convertSlug'
+import ScaleLoader from 'react-spinners/ScaleLoader'
 
 import {
   nftaddress, nftmarketaddress
@@ -78,7 +79,12 @@ const Exchange = () => {
     )
 
   if (loadingState === 'not-loaded')
-    return (<div className='ml-4'>Loading...</div>)
+    return (
+      <div className='flex flex-col items-center justify-center text-brand'>
+        <p className='text-xl mb-8'>Loading asset from the blockchain...</p>
+        <ScaleLoader size={25} color='var(--color-brand)' />
+      </div>
+    )
 
   if (loadingState === 'loaded' && !nfts.length)
     return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
