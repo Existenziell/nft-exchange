@@ -11,9 +11,12 @@ module.exports = {
     },
     extend: {
       colors: {
-        'brand': '#a6d1c9',
-        'brand-dark': '#282b29',
+        'brand': '#0076C9',
+        'brand-dark': '#FFF',
         'highlight': '#C90076',
+      },
+      backgroundImage: {
+        ribbon: 'url(/icons/ribbon.svg)',
       },
     },
   },

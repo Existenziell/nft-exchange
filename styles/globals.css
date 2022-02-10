@@ -11,7 +11,7 @@ email: bauer.christof@gmail.com
 
 :root {
   --color-brand: #a6d1c9;
-  --color-brand-dark: #282b29;
+  --color-brand-dark: #0076C9;
   --color-highlight: #C90076;
 }
 
@@ -32,7 +32,7 @@ email: bauer.christof@gmail.com
 }
 
 .link:hover {
-  @apply no-underline rounded transition-all duration-500 text-white bg-brand-dark; 
+  @apply no-underline rounded transition-all duration-500 text-black bg-brand-dark; 
 }
 
 .button {

@@ -69,12 +69,6 @@ const Exchange = () => {
     loadNFTs()
   }
 
-  if (loadingState === 'not-loaded')
-    return (<div className='ml-4'>Loading...</div>)
-
-  if (loadingState === 'loaded' && !nfts.length)
-    return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
-
   if (!context.state.isCorrectChain)
     return (
       <>
@@ -83,9 +77,30 @@ const Exchange = () => {
       </>
     )
 
+  if (loadingState === 'not-loaded')
+    return (<div className='ml-4'>Loading...</div>)
+
+  if (loadingState === 'loaded' && !nfts.length)
+    return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
+
   return (
     <div className="px-4 pb-16">
-      <h1 className='text-brand text-2xl mb-8'>Special Collection Today:</h1>
+      <section className='bla bg-ribbon bg-no-repeat bg-center flex justify-center'>
+        <div className='bg-white rounded-full border-2 border-gray-400 w-40 h-40 flex items-center'>
+          <img src='/clients/scarselli.png' />
+        </div>
+      </section>
+      <h2 className='text-3xl mt-8'>Scarselli Diamonds</h2>
+
+      <div className='border border-gray-300 text-gray-500 w-full lg:w-1/2 mx-auto rounded-2xl mb-8 mt-2'>
+        <ul className='flex items-center justify-between py-4'>
+          <li className='border-r w-1/4'><span className='font-extrabold text-lg block text-brand'>10K</span>items</li>
+          <li className='border-r w-1/4'><span className='font-extrabold text-lg block text-brand'>69</span>owners</li>
+          <li className='border-r w-1/4'><span className='font-extrabold text-lg block text-brand'>1.25</span>floor price</li>
+          <li className='w-1/4'><span className='font-extrabold text-lg block text-brand'>42.8K</span>volume traded</li>
+        </ul>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 pt-4">
         {nfts.map((nft, i) => (
           <div key={i} className="border border-brand shadow rounded overflow-hidden text-left mb-16">
@@ -104,7 +119,7 @@ const Exchange = () => {
             </Link>
             <div className="p-4 bg-brand">
               <p className="text-2xl mb-4 font-bold text-brand-dark">{nft.price} ETH</p>
-              <button className="w-full bg-brand-dark text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
+              <button className="w-full bg-brand-dark text-brand font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
             </div>
           </div>
 

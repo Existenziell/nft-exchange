@@ -13,7 +13,6 @@ const Wallet = () => {
   const router = useRouter()
 
   const context = useContext(AppContext)
-  let isCorrectChain = context.state.isCorrectChain
 
   const getNameFromChainId = (chainId) => {
     if (chainId === 1337) return 'Local (1337)'
@@ -71,7 +70,7 @@ const Wallet = () => {
         // setIsCorrectChain(false)
         context.setIsCorrectChain(false)
     })
-  }, [router, isCorrectChain, context.setIsCorrectChain])
+  }, [router, context.setIsCorrectChain])
 
   return (
     <div className='absolute top-24 right-6 text-right text-sm'>

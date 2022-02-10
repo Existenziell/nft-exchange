@@ -87,7 +87,7 @@ const Asset = ({ asset }) => {
 
         <div className="p-4 bg-brand">
           <p className="text-2xl mb-4 font-bold text-brand-dark">{nft.price} ETH</p>
-          <button className="w-full bg-brand-dark text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
+          <button className="w-full bg-brand-dark text-brand font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
         </div>
       </div>
     </div>
