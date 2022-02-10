@@ -73,10 +73,10 @@ const Wallet = () => {
   }, [router, context.setIsCorrectChain])
 
   return (
-    <div className='absolute top-24 right-6 text-right text-sm'>
+    <div className='absolute top-24 right-6 text-right text-xs'>
       {isWalletConnected ?
         <div>
-          {connectedWalletAddress.substring(0, 5)}&#8230;{connectedWalletAddress.slice(connectedWalletAddress.length - 4)}
+          Wallet: {connectedWalletAddress.substring(0, 5)}&#8230;{connectedWalletAddress.slice(connectedWalletAddress.length - 4)}
         </div>
         :
         <ConnectWallet />

@@ -33,7 +33,7 @@ const Nav = () => {
 
       {/* Mobile Menu */}
       {isOpen &&
-        <ul className='mobile-menu left-0 right-0 top-0 bottom-0 pt-20 z-10 text-brand-dark bg-brand absolute h-screen'>
+        <ul className='mobile-menu left-0 right-0 top-0 bottom-0 pt-28 z-10 text-brand-dark bg-brand absolute h-screen'>
           {links.map(l => (
             <li key={l.name}>
               <Link href={l.path}>
