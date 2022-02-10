@@ -103,7 +103,7 @@ const Exchange = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 pt-4">
         {nfts.map((nft, i) => (
-          <div key={i} className="border border-gray-400 shadow hover:shadow-lg rounded overflow-hidden text-left mb-16 transition-all">
+          <div key={i} className="border border-gray-400 shadow hover:shadow-lg rounded overflow-hidden text-left mb-8 transition-all flex flex-col justify-between">
             <Link href={`/assets/${convertSlug(nft.name)}`}>
               <a>
                 <Image width={600} height={600} layout={'responsive'} src={nft.image} alt={nft.image} />
